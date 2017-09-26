@@ -13,19 +13,6 @@ pipeline {
         sayHello 'Awesome Student!'
       }
     }
-    stage('Git Information') {
-      agent any
-
-      steps {
-        echo "My Branch Name: ${env.BRANCH_NAME}"
-
-        script {
-          def myLib = new hussainaphroj.git.gitStuff();
-
-          echo "My Commit: ${myLib.gitCommit("${env.WORKSPACE}/.git")}"
-        }
-      }
-    }
     stage('Unit Tests') {
       agent {
         label 'apache'
